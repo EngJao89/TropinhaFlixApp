@@ -8,7 +8,7 @@ export function Header() {
   return (
     <View style={styles.container}>
       <FinnTheHuman color={theme.colors.white} size={24} />
-      <Text style={styles.title}>Cine Prime</Text>
+      <Text style={styles.title}>Tropinha Flix</Text>
     </View>
   );
 }

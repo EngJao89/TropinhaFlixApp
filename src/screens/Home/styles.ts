@@ -7,4 +7,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 24,
   },
+  searchContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    height: 50,
+    padding: 14,
+    marginBottom: 8,
+  },
 });
