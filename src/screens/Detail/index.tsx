@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {
+  Alert,
   Image,
   ScrollView,
   Modal,
@@ -19,7 +20,7 @@ import {
 import {useNavigation, useRoute} from '@react-navigation/native';
 
 import {Genres} from '../../components/Genres';
-import ModalLink from '../../components/ModalLink';
+import {ModalLink} from '../../components/ModalLink';
 
 import api from '../../service/api';
 import {styles} from './style';
@@ -72,11 +73,11 @@ export function Detail() {
     if (favoritedMovie) {
       await deleteMovie(movie.id);
       setFavoritedMovie(false);
-      alert('Filme removido da sua lista');
+      Alert.alert('Filme removido da sua lista');
     } else {
       await saveMovie('@cineprime', movie);
       setFavoritedMovie(true);
-      alert('Filme salvo na sua lista!');
+      Alert.alert('Filme salvo na sua lista!');
     }
   }
 
