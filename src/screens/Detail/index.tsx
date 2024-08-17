@@ -18,7 +18,7 @@ import {
 
 import {useNavigation, useRoute} from '@react-navigation/native';
 
-import Genres from '../../components/Genres';
+import {Genres} from '../../components/Genres';
 import ModalLink from '../../components/ModalLink';
 
 import api from '../../service/api';
@@ -146,7 +146,3 @@ export function Detail() {
     </View>
   );
 }
-function alert(arg0: string) {
-  throw new Error('Function not implemented.');
-}
-
