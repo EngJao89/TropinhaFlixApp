@@ -14,4 +14,8 @@ export const styles = StyleSheet.create({
     padding: 14,
     marginBottom: 8,
   },
+  sliderMovie: {
+    height: 250,
+    padding: 14,
+  },
 });
