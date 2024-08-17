@@ -28,7 +28,7 @@ export const theme = {
     XS: 12,
     SM: 14,
     MD: 18,
-    LG: 20,
+    LG: 22,
     XL: 30,
     XXL: 40,
     EXL: 48,

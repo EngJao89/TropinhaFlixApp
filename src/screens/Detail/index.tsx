@@ -1,5 +1,13 @@
 import {useState, useEffect} from 'react';
-import {Image, ScrollView, Modal, View, TouchableOpacity} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  Modal,
+  View,
+  TouchableOpacity,
+  Text,
+  FlatList,
+} from 'react-native';
 
 import {
   ArrowLeft,
@@ -35,7 +43,7 @@ export function Detail() {
       try {
         const response = await api.get(`/movie/${route.params?.id}`, {
           params: {
-            api_key: key,
+            api_key: process.env.API_KEY,
             language: 'pt-BR',
           },
         });
@@ -106,14 +114,17 @@ export function Detail() {
         <BoxArrowUp size={24} color="#FFF" />
       </TouchableOpacity>
 
-      <Title numberOfLines={2}>{movie.title}</Title>
+      <Text numberOfLines={2} style={styles.title}>
+        {movie.title}
+      </Text>
 
-      <ContentArea>
-        <Rate>{movie.vote_average}/10</Rate>
-      </ContentArea>
+      <View style={styles.contentArea}>
+        <Text style={styles.rate}>{movie.vote_average}/10</Text>
+      </View>
 
-      <ListGenres
-        data={movie?.genres || []}
+      <FlatList
+        style={styles.listGenres}
+        data={movie?.genre_ids || []}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => String(item.id)}
@@ -121,8 +132,8 @@ export function Detail() {
       />
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Title>Descrição</Title>
-        <Description>{movie?.overview}</Description>
+        <Text style={styles.title}>Descrição</Text>
+        <Text style={styles.description}>{movie?.overview}</Text>
       </ScrollView>
 
       <Modal animationType="slide" transparent={true} visible={openLink}>
