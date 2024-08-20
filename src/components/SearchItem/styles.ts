@@ -16,4 +16,14 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 8,
   },
+  rateContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 4,
+  },
+  rate: {
+    paddingTop: 4,
+    color: theme.colors.white,
+    fontSize: theme.fonts.XS,
+  },
 });
