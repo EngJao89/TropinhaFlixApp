@@ -14,6 +14,20 @@ export const styles = StyleSheet.create({
     padding: 14,
     marginBottom: 8,
   },
+  title: {
+    paddingTop: 20,
+    paddingBottom: 8,
+    fontSize: theme.fonts.LG,
+    fontWeight: 'bold',
+    color: theme.colors.white,
+    paddingLeft: 14,
+    paddingRight: 14,
+  },
+  banner: {
+    height: 150,
+    borderRadius: 6,
+    marginHorizontal: 14,
+  },
   sliderMovie: {
     height: 250,
     padding: 14,
