@@ -15,6 +15,7 @@ import {
   Bookmark,
   Bookmarks,
   BoxArrowUp,
+  Star,
 } from 'phosphor-react-native';
 
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -22,7 +23,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {Genres} from '../../components/Genres';
 import {ModalLink} from '../../components/ModalLink';
 
-import api from '../../service/api';
+import api, {key} from '../../service/api';
 import {styles} from './style';
 
 import {Movie} from '../../@types/movie';
@@ -41,10 +42,12 @@ export function Detail() {
     let isActive = true;
 
     async function getMovie() {
+      if (!route.params?.id) return;
+
       try {
         const response = await api.get(`/movie/${route.params?.id}`, {
           params: {
-            api_key: process.env.API_KEY,
+            api_key: key,
             language: 'pt-BR',
           },
         });
@@ -69,15 +72,27 @@ export function Detail() {
     };
   }, [route.params?.id]);
 
-  async function handlefavoriteMovie(movie: Movie) {
-    if (favoritedMovie) {
-      await deleteMovie(movie.id);
-      setFavoritedMovie(false);
-      Alert.alert('Filme removido da sua lista');
+  async function handlefavoriteMovie(movie: Partial<Movie>) {
+    if (
+      movie.id &&
+      movie.title &&
+      movie.poster_path &&
+      movie.overview &&
+      movie.release_date &&
+      movie.vote_average !== undefined
+    ) {
+      if (favoritedMovie) {
+        await deleteMovie(movie.id);
+        setFavoritedMovie(false);
+        Alert.alert('Filme removido da sua lista');
+      } else {
+        await saveMovie('@cineprime', movie as Movie);
+        setFavoritedMovie(true);
+        Alert.alert('Filme salvo na sua lista!');
+      }
     } else {
-      await saveMovie('@cineprime', movie);
-      setFavoritedMovie(true);
-      Alert.alert('Filme salvo na sua lista!');
+      console.error('O objeto do filme não está completo');
+      return;
     }
   }
 
@@ -120,16 +135,17 @@ export function Detail() {
       </Text>
 
       <View style={styles.contentArea}>
+        <Star size={12} color="#E7A74e" />
         <Text style={styles.rate}>{movie.vote_average}/10</Text>
       </View>
 
       <FlatList
         style={styles.listGenres}
-        data={movie?.genre_ids || []}
+        data={movie?.genres || []}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <Genres data={item} />}
+        keyExtractor={item => String(item.id)}
+        renderItem={({item}) => <Genres data={item} />}
       />
 
       <ScrollView showsVerticalScrollIndicator={false}>
