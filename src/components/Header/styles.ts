@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 32,
   },
-  icon: {
+  drawerButton: {
     height: 70,
     alignItems: 'center',
     flexDirection: 'row',
