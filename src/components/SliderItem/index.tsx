@@ -1,19 +1,19 @@
+import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {Star} from 'phosphor-react-native';
-
 import {styles} from './styles';
 import {Movie} from '../../@types/movie';
 
 interface SliderItemProps {
   data: Movie;
-  navigatePage: () => void;
+  navigatePage: (data: Movie) => void;
 }
 
 export function SliderItem({data, navigatePage}: SliderItemProps) {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={navigatePage}
+      onPress={() => navigatePage(data)}
       style={styles.container}>
       <Image
         source={{
@@ -21,11 +21,13 @@ export function SliderItem({data, navigatePage}: SliderItemProps) {
         }}
         style={styles.bannerItem}
       />
-      <Text style={styles.title}>{data.title}</Text>
+      <Text style={styles.title} numberOfLines={1}>
+        {data.title}
+      </Text>
 
       <View style={styles.rateContainer}>
         <Star size={12} color="#E7A74e" />
-        <Text style={styles.rate}>{data.vote_average}</Text>
+        <Text style={styles.rate}>{data.vote_average}/10</Text>
       </View>
     </TouchableOpacity>
   );
