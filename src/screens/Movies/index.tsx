@@ -5,7 +5,7 @@ import {useNavigation, useIsFocused} from '@react-navigation/native';
 import {deleteMovie, getMoviesSave} from '../../utils/storage';
 import {styles} from './styles';
 import {FavoriteItem} from '../../components/FavoriteItem';
-import {MovieHeader} from '../../components/MovieHeader';
+import {Header} from '../../components/Header';
 
 interface Movie {
   id: number;
@@ -49,7 +49,7 @@ export function Movies() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <MovieHeader />
+      <Header title="Meus Filmes" />
 
       <FlatList
         showsVerticalScrollIndicator={false}
