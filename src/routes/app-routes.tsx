@@ -1,4 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
 import {Home} from '../screens/Home';
 import {Detail} from '../screens/Detail';
@@ -16,11 +17,13 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function AppRoutes() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="home" component={Home} />
-      <Stack.Screen name="detail" component={Detail} />
-      <Stack.Screen name="movies" component={Movies} />
-      <Stack.Screen name="search" component={Search} />
-    </Stack.Navigator>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="detail" component={Detail} />
+        <Stack.Screen name="movies" component={Movies} />
+        <Stack.Screen name="search" component={Search} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
