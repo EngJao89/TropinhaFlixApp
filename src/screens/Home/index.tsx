@@ -108,7 +108,7 @@ export function Home() {
 
   return (
     <View style={styles.container}>
-      <Header />
+      <Header title="Tropinha Flix" />
 
       <View style={styles.searchContainer}>
         <Input

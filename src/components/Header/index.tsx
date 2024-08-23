@@ -1,14 +1,26 @@
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {FilmSlate} from 'phosphor-react-native';
+import {useNavigation, DrawerActions} from '@react-navigation/native';
 
 import {theme} from '../../styles/theme';
 import {styles} from './styles';
 
-export function Header() {
+type HeaderProps = {
+  title: string;
+};
+
+export function Header({title}: HeaderProps) {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <FilmSlate color={theme.colors.white} size={24} />
-      <Text style={styles.title}>Tropinha Flix</Text>
+      <TouchableOpacity
+        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        style={styles.drawerButton}>
+        <FilmSlate color={theme.colors.white} size={24} />
+      </TouchableOpacity>
+
+      <Text style={styles.title}>{title}</Text>
     </View>
   );
 }
