@@ -98,13 +98,13 @@ export function Home() {
     setInput('');
   }
 
-  if (loading) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="#FFF" />
-      </View>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <View style={styles.container}>
+  //       <ActivityIndicator size="large" color="#FFF" />
+  //     </View>
+  //   );
+  // }
 
   return (
     <View style={styles.container}>
