@@ -98,13 +98,6 @@ export function Home() {
     navigation.navigate('detail', {id: item.id});
   }
 
-  function handleSearchMovie() {
-    if (input === '') return;
-
-    navigation.navigate('search', {name: input});
-    setInput('');
-  }
-
   if (loading) {
     return (
       <View style={styles.container}>

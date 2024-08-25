@@ -11,8 +11,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     height: 50,
-    padding: 14,
-    marginBottom: 8,
+    marginBottom: 18,
   },
   title: {
     paddingTop: 20,
