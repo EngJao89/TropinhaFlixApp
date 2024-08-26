@@ -57,12 +57,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 14,
     paddingRight: 14,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
   rate: {
     color: theme.colors.white,
     fontSize: theme.fonts.MD,
     fontWeight: 'bold',
+    marginLeft: 4,
   },
   description: {
     paddingBottom: 30,
